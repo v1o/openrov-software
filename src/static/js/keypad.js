@@ -100,7 +100,6 @@ var KEYS = {
     command: 'light',
     value: 0
   },
->>>>>>> df6b09b8d26b482bf1674171d75800298dc351a3
 }
 
 var KeyPad = function() {
@@ -157,7 +156,7 @@ var KeyPad = function() {
   };
 
   $(window).keydown(function(evt) {
-    console.log(evt.keyCode);
+    console.log("Key code: " + evt.keyCode);
     var info = KEYS[evt.keyCode];
     if ((!info) || (!processKeys)) return;
     evt.preventDefault();
