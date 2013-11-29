@@ -37,3 +37,7 @@ Thumbs.db
 node_modules
 src/capture
 temp
+
+arduino/OpenROV/.build/
+arduino/OpenROV/src/
+serial_view.py

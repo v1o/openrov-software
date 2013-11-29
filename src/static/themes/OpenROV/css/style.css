@@ -242,6 +242,58 @@ img.center {
     background-position: 0px 0px;
 }
 
+#calibrationLaserIndicator {
+    width:250px;
+    height: 51px;
+    border:1px solid black;
+    background-image: url('../img/brightness.png');
+    background-repeat:no-repeat;
+}
+
+#calibrationLaserIndicator.level0 {
+    background-image: none;
+}
+
+#calibrationLaserIndicator.level1 {
+    background-position: 0px -471px;
+}
+
+#calibrationLaserIndicator.level2 {
+    background-position: 0px -418px;
+}
+
+#calibrationLaserIndicator.level3 {
+    background-position: 0px -366px;
+}
+
+#calibrationLaserIndicator.level4 {
+    background-position: 0px -313px;
+}
+
+#calibrationLaserIndicator.level5 {
+    background-position: 0px -261px;
+}
+
+#calibrationLaserIndicator.level6 {
+    background-position: 0px -209px;
+}
+
+#calibrationLaserIndicator.level7 {
+    background-position: 0px -157px;
+}
+
+#calibrationLaserIndicator.level8 {
+    background-position: 0px -104px;
+}
+
+#calibrationLaserIndicator.level9 {
+    background-position: 0px -52px;
+}
+
+#calibrationLaserIndicator.level10 {
+    background-position: 0px 0px;
+}
+
 .battery0 {
     background: #ffffff;
 }

@@ -170,6 +170,10 @@ io.sockets.on('connection', function (socket) {
     socket.on('brightness_update', function(value) {
         controller.sendLight(value);
     });
+
+    socket.on('calibration_laser_update', function(value) {
+        controller.sendCalibrationLaser(value);
+    });
     
     socket.emitPhotos = function(){
           fs.readdir(CONFIG.preferences.get('photoDirectory'),function(err,files){

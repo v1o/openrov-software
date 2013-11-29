@@ -87,6 +87,14 @@ var KEYS = {
   79: { //o (brightness down) 
      command: 'light',
      value: -1
+  },
+  76: { //l (calibration laser up) 
+     command: 'claser',
+     value: 1
+  },
+  75: { //k (calibration laser down) 
+     command: 'claser',
+     value: -1
   }
 }
 
@@ -105,6 +113,10 @@ var KeyPad = function() {
 
     kp.bindBrightness = function(callback){
         brightnessHandler=callback;
+    };
+
+    kp.bindCalibrationLaser = function(callback){
+        calibrationLaserHandler=callback;
     };
 
   kp.bindKeys = function(){
@@ -140,6 +152,7 @@ var KeyPad = function() {
   };
 
   $(window).keydown(function(evt) {
+    console.log(evt.keyCode);
     var info = KEYS[evt.keyCode];
     if ((!info) || (!processKeys)) return;
     evt.preventDefault();
@@ -149,6 +162,8 @@ var KeyPad = function() {
         servoTiltHandler(info.value);
     else if(info.command=='light')
         brightnessHandler(info.value);
+    else if(info.command=='claser')
+        calibrationLaserHandler(info.value);
     else if(info.command=='power')
         power=info.value;
     else if(info.command=='vtrim')

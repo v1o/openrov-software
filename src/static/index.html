@@ -58,6 +58,11 @@
                     <p>Brightness: <span data-bind="text: currentBrightness()*10">0</span>%</p>
                     <p>Use <i>o</i>, <i>p</i> to increase brightness of lights.</p>
                 </div>
+                <div id="calibrationLaser" class="controller well well-small" >
+                    <p><div id="calibrationLaserIndicator" data-bind="attr: {class: calibrationLaserClass}"></div></p>
+                    <p>Calibration Laser: <span data-bind="text: currentCalibrationLaser()*10">0</span>%</p>
+                    <p>Use <i>k</i>, <i>l</i> to increase calibration lights.</p>
+                </div>
                 <div id="telemetry" class="controller well well-small" >
 
 		    <ul data-bind="foreach: rawTelemetry">
@@ -483,6 +488,11 @@
             kp.bindBrightness(function (value){
                 viewmodel.updateBrightness(value);
                 socket.emit('brightness_update',viewmodel.currentBrightness());
+            });
+
+            kp.bindCalibrationLaser(function (value){
+                viewmodel.updateCalibrationLaser(value);
+                socket.emit('calibration_laser_update',viewmodel.currentCalibrationLaser());
             });
 	    
             gp.bindBrightness(function (value){

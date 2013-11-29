@@ -24,6 +24,7 @@ function OpenRovViewModel(){
     self.currentRawCpuUsage = ko.observable(0);
     self.currentTiltPosition = ko.observable(0);
     self.currentBrightness = ko.observable(0);
+    self.currentCalibrationLaser = ko.observable(0);
     self.currentTime = ko.observable(new Date());
     self.sendUpdateEnabled = ko.observable(true);
     self.rawTelemetry = ko.observableArray([]);
@@ -58,7 +59,7 @@ function OpenRovViewModel(){
 	self.convertedTemperature = ko.computed(function(){
 		switch(self.unitTemperature()){
 			case "celsius":
-				return self.currentTemperature().toFixed(2)+"&deg;C";
+				return (self.currentTemperature()+0).toFixed(2)+"&deg;C";
 				break;
 			case "farenheit":
 				return ((9/5)*self.currentTemperature()+32).toFixed(2)+"&deg;F";
@@ -75,6 +76,11 @@ function OpenRovViewModel(){
     self.brightnessClass = ko.computed(function(){
         var brightness = self.currentBrightness();
         return "center level"+brightness;
+    });
+
+    self.calibrationLaserClass = ko.computed(function(){
+        var calibrationLaser = self.currentCalibrationLaser();
+        return "center level"+calibrationLaser;
     });
 
     self.batteryLevel = ko.computed(function(){
@@ -155,6 +161,13 @@ function OpenRovViewModel(){
         newVal += value;
         if(newVal<0 || newVal >10) return;
         self.currentBrightness(newVal);
+    }
+
+    self.updateCalibrationLaser = function(value) {
+        var newVal = self.currentCalibrationLaser();
+        newVal += value;
+        if(newVal<0 || newVal >10) return;
+        self.currentCalibrationLaser(newVal);
     }
     
     ko.bindingHandlers.slider = {

@@ -168,6 +168,14 @@ var OpenROVController = function(eventLoop) {
         if(CONFIG.debug_commands) console.error("command", command);
         if(CONFIG.production) serial.write(command);
     };
+
+    controller.sendCalibrationLaser = function(value) {
+        if (this.NotSafeToControl()) return;
+        var light = physics.mapLight(value);
+        var command = 'claser(' + light +');';
+        if(CONFIG.debug_commands) console.error("command", command);
+        if(CONFIG.production) serial.write(command);
+    };
     
     controller.stop = function(value) {
         if (this.NotSafeToControl()) return;
