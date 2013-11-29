@@ -88,14 +88,19 @@ var KEYS = {
      command: 'light',
      value: -1
   },
-  76: { //l (calibration laser up) 
+  73: { //i (calibration laser up) 
      command: 'claser',
      value: 1
   },
-  75: { //k (calibration laser down) 
+  85: { //u (calibration laser down) 
      command: 'claser',
      value: -1
   }
+  76: { //l (brightness toggle)
+    command: 'light',
+    value: 0
+  },
+>>>>>>> df6b09b8d26b482bf1674171d75800298dc351a3
 }
 
 var KeyPad = function() {
@@ -111,9 +116,9 @@ var KeyPad = function() {
       servoTiltHandler=callback;
   };
 
-    kp.bindBrightness = function(callback){
-        brightnessHandler=callback;
-    };
+  kp.bindBrightness = function(callback){
+      brightnessHandler=callback;
+  };
 
     kp.bindCalibrationLaser = function(callback){
         calibrationLaserHandler=callback;
